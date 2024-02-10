@@ -1,0 +1,94 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "start: core",
+        "type": "shell",
+        "command": "npm start",
+        "isBackground": true,
+        "options": {
+          "cwd": "${workspaceFolder}/core"
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "group": "frontend",
+          "panel": "shared",
+          "showReuseMessage": true,
+          "clear": false
+        },
+        "problemMatcher": [
+          {
+            "pattern": [
+              {
+                "regexp": ".",
+                "file": 1,
+                "location": 2,
+                "message": 3
+              }
+            ],
+            "background": {
+              "activeOnStart": true,
+              "beginsPattern": ".",
+              "endsPattern": "built in*"
+            }
+          }
+        ]
+      },
+      {
+        "label": "start: admin",
+        "type": "shell",
+        "command": "npm run dev",
+        "dependsOn": ["start: core"],
+        "options": {
+          "port": "3001",
+          "cwd": "${workspaceFolder}/admin"
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "group": "frontend",
+          "panel": "new",
+          "showReuseMessage": true,
+          "clear": false
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "start: storefront",
+        "type": "shell",
+        "command": "npm run dev",
+        "dependsOn": ["start: core"],
+        "options": {
+          "cwd": "${workspaceFolder}/storefront"
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "group": "frontend",
+          "panel": "new",
+          "showReuseMessage": true,
+          "clear": false
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "start: all",
+        "type": "shell",
+        "dependsOn": ["start: core", "start: admin", "start: storefront"],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "group": "frontend",
+          "panel": "new",
+          "showReuseMessage": true,
+          "clear": false
+        },
+        "problemMatcher": []
+      },
+    ]
+  }
